@@ -8,8 +8,8 @@
 #include <assert.h>
 
 template <class E>
-        struct Node<E>{
-    Node<E>*next;
+        struct Node{
+    Node<E>*next= nullptr;
     E value;
         public:
     Node(E value,Node<E>*next){
@@ -25,17 +25,16 @@ template <class E>
             int size();
             E*get(int index);
 
-            int leng;
+            int leng=0;
             ~LinkedList();
 
-            template<class E>
             Node<E> *node(int i);
         };
 template <class E>
 void LinkedList<E>::push(E e) {
     //创建新节点
-    Node<E> *new_node=new Node<E>(e, NULL);
-    if(head){
+    Node<E> *new_node=new Node<E>(e, nullptr);
+    if(head== nullptr){
 //        Node<E>*h=head;
 //        while(h){
 //            if(h->next==NULL){
@@ -73,6 +72,11 @@ E * LinkedList<E>::get(int index){
 template<class E>
 int LinkedList<E>::size() {
     return leng;
+}
+
+template<class E>
+LinkedList<E>::~LinkedList() {
+
 }
 
 
